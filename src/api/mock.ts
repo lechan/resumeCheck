@@ -75,75 +75,162 @@ export async function mockResumeStatus(_resumeId: string): Promise<TaskStatus> {
 export async function mockNormalizedResume(_resumeId: string): Promise<ResumeSchema> {
   await delay(400)
   return {
+    schema_version: '1.0.0',
     resume_id: _resumeId,
-    source: 'mock',
+    source: {
+      file_name: '张明远_高级前端工程师.pdf',
+      file_type: 'pdf',
+      mime_type: 'application/pdf',
+      file_size: 245000,
+      language: 'zh-CN',
+      pages: 3,
+      upload_time: new Date().toISOString(),
+    },
+    parse_meta: {
+      parser_chain: ['pdf_text'],
+      parse_confidence: 0.92,
+      ocr_used: false,
+      layout_used: true,
+      raw_text: '张明远 高级前端工程师 ...',
+      raw_blocks: [],
+    },
     candidate: {
-      name: '张明远',
-      email: 'zhangmingyuan@example.com',
-      phone: '138****6789',
-      gender: '男',
-      age: 29,
-      current_position: '高级前端工程师',
-      years_of_experience: 6,
+      name: { value: '张明远', confidence: 0.95, evidence: [], derived: false },
+      gender: { value: '男', confidence: 0.9, evidence: [], derived: false },
+      birth_date: { value: '1995-03', confidence: 0.85, evidence: [], derived: false },
+      age: { value: 29, confidence: 0.85, derived: true },
+      phone: { value: '138****6789', confidence: 0.9, evidence: [], derived: false },
+      email: { value: 'zhangmingyuan@example.com', confidence: 0.95, evidence: [], derived: false },
+      current_city: { value: '杭州', confidence: 0.8, evidence: [], derived: true },
+      highest_degree: { value: '本科', confidence: 0.9, evidence: [], derived: false },
+      total_work_years: { value: 6, confidence: 0.85, derived: true },
     },
     education: [
       {
-        school: '浙江大学',
-        degree: '本科',
-        major: '计算机科学与技术',
-        start_date: '2015-09',
-        end_date: '2019-07',
+        edu_id: 'edu_1',
+        school_name: { value: '浙江大学', confidence: 0.9, evidence: [], derived: false },
+        degree: { value: '本科', confidence: 0.9, evidence: [], derived: false },
+        major: { value: '计算机科学与技术', confidence: 0.9, evidence: [], derived: false },
+        start_date: {
+          value: '2015-09',
+          date_precision: 'month',
+          confidence: 0.85,
+          evidence: [],
+          derived: false,
+        },
+        end_date: {
+          value: '2019-07',
+          date_precision: 'month',
+          confidence: 0.85,
+          evidence: [],
+          derived: false,
+        },
+        is_current: false,
       },
     ],
     work_experience: [
       {
-        company: '字节跳动',
-        position: '高级前端工程师',
-        start_date: '2021-04',
-        end_date: '2024-06',
-        description:
-          '负责抖音电商中台前端架构设计与开发，主导搭建微前端架构体系，将 8 个业务模块拆分为独立子应用，首屏加载性能提升 40%。使用 React + TypeScript 重构核心交易链路，日均处理订单超百万级。',
+        work_id: 'work_1',
+        company_name: { value: '字节跳动', confidence: 0.9, evidence: [], derived: false },
+        title: { value: '高级前端工程师', confidence: 0.85, evidence: [], derived: false },
+        start_date: {
+          value: '2021-04',
+          date_precision: 'month',
+          confidence: 0.85,
+          evidence: [],
+          derived: false,
+        },
+        end_date: {
+          value: '2024-06',
+          date_precision: 'month',
+          confidence: 0.85,
+          evidence: [],
+          derived: false,
+        },
+        is_current: false,
+        description: {
+          value:
+            '负责抖音电商中台前端架构设计与开发，主导搭建微前端架构体系，将 8 个业务模块拆分为独立子应用，首屏加载性能提升 40%。',
+          confidence: 0.8,
+          evidence: [],
+          derived: false,
+        },
       },
       {
-        company: '美团',
-        position: '前端开发工程师',
-        start_date: '2019-07',
-        end_date: '2021-03',
-        description:
-          '参与美团外卖商家端前端开发，负责订单管理、数据分析等核心模块。使用 Vue.js 技术栈，推动组件库标准化建设，沉淀 30+ 业务组件。',
-      },
-      {
-        company: '杭州某科技有限公司',
-        position: '前端实习生',
-        start_date: '2018-07',
-        end_date: '2018-12',
-        description: '参与公司官网重构，使用 HTML/CSS/JS 完成页面开发。',
+        work_id: 'work_2',
+        company_name: { value: '美团', confidence: 0.9, evidence: [], derived: false },
+        title: { value: '前端开发工程师', confidence: 0.85, evidence: [], derived: false },
+        start_date: {
+          value: '2019-07',
+          date_precision: 'month',
+          confidence: 0.85,
+          evidence: [],
+          derived: false,
+        },
+        end_date: {
+          value: '2021-03',
+          date_precision: 'month',
+          confidence: 0.85,
+          evidence: [],
+          derived: false,
+        },
+        is_current: false,
+        description: {
+          value:
+            '参与美团外卖商家端前端开发，负责订单管理、数据分析等核心模块。使用 Vue.js 技术栈，推动组件库标准化建设，沉淀 30+ 业务组件。',
+          confidence: 0.8,
+          evidence: [],
+          derived: false,
+        },
       },
     ],
     project_experience: [
       {
-        name: '微前端架构落地',
-        role: '前端负责人',
-        start_date: '2022-03',
-        end_date: '2022-12',
-        description:
-          '主导电商中台微前端架构改造，基于 qiankun 框架实现主子应用隔离，设计统一通信协议，解决跨应用状态共享问题。',
-      },
-      {
-        name: '组件库建设',
-        role: '核心开发者',
-        start_date: '2020-06',
-        end_date: '2021-01',
-        description: '参与组件库标准化建设，制定组件 API 规范，编写文档和单元测试。',
+        project_id: 'proj_1',
+        project_name: { value: '微前端架构落地', confidence: 0.85, evidence: [], derived: false },
+        role: { value: '前端负责人', confidence: 0.8, evidence: [], derived: false },
+        start_date: {
+          value: '2022-03',
+          date_precision: 'month',
+          confidence: 0.8,
+          evidence: [],
+          derived: false,
+        },
+        end_date: {
+          value: '2022-12',
+          date_precision: 'month',
+          confidence: 0.8,
+          evidence: [],
+          derived: false,
+        },
+        description: {
+          value:
+            '主导电商中台微前端架构改造，基于 qiankun 框架实现主子应用隔离，设计统一通信协议。',
+          confidence: 0.75,
+          evidence: [],
+          derived: false,
+        },
+        metrics: [],
       },
     ],
-    skills: ['React', 'Vue.js', 'TypeScript', '微前端', 'Webpack', 'Node.js', '性能优化', 'Git'],
-    certificates: ['软考中级 - 软件设计师'],
-    languages: ['英语 CET-6'],
-    self_evaluation:
-      '6 年前端开发经验，主导过大型电商平台微前端架构改造，擅长前端工程化和性能优化。在字节跳动期间作为核心前端开发，深刻理解大规模前端应用的架构设计。',
-    timeline_index: {},
-    quality_flags: {},
+    skills: [
+      { value: 'React', confidence: 0.9, evidence: [], derived: false },
+      { value: 'Vue.js', confidence: 0.9, evidence: [], derived: false },
+      { value: 'TypeScript', confidence: 0.9, evidence: [], derived: false },
+      { value: '微前端', confidence: 0.85, evidence: [], derived: false },
+      { value: 'Webpack', confidence: 0.8, evidence: [], derived: false },
+      { value: 'Node.js', confidence: 0.8, evidence: [], derived: false },
+    ],
+    certificates: [
+      { value: '软考中级 - 软件设计师', confidence: 0.9, evidence: [], derived: false },
+    ],
+    languages: [{ value: '英语 CET-6', confidence: 0.9, evidence: [], derived: false }],
+    self_evaluation: {
+      text: '6 年前端开发经验，主导过大型电商平台微前端架构改造，擅长前端工程化和性能优化。',
+      confidence: 0.85,
+    },
+    timeline_index: [],
+    quality_flags: [],
   }
 }
 
@@ -153,7 +240,7 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
   return {
     report_id: 'mock_rpt_001',
     resume_id: _resumeId,
-    risk_score: 28,
+    risk_score: 72,
     risk_level: 'medium',
     risk_items: [
       {
@@ -208,8 +295,14 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
         suggestion: '项目时间符合逻辑。',
       },
     ],
-    summary:
-      '该候选人整体风险指数为 28 分（中等风险）。主要关注点包括：毕业初期存在短期履历断层、实习生阶段经历描述偏弱。优势方面，近 3 年跳槽频率正常，工作经历时间线清晰连贯，项目经历与任职时间吻合。建议重点核实毕业空窗期原因。',
+    summary: {
+      major_findings: [
+        '毕业初期存在短期履历断层，建议核实空窗期原因',
+        '实习生阶段经历描述偏弱，缺乏量化成果',
+        '近 3 年跳槽频率正常，工作经历时间线清晰连贯',
+        '项目经历与任职时间吻合，未发现越界问题',
+      ],
+    },
     generated_at: new Date().toISOString(),
   }
 }
@@ -267,7 +360,7 @@ export async function mockImportToLibrary(): Promise<LibraryDetail> {
     total_work_years: 6,
     skills: ['React', 'Vue.js', 'TypeScript', '微前端'],
     tags: ['前端', '高级'],
-    risk_score: 28,
+    risk_score: 72,
     risk_level: 'medium',
     source_label: '校园招聘',
     created_at: new Date().toISOString(),
@@ -290,7 +383,7 @@ export async function mockQueryLibrary(): Promise<LibraryListItem[]> {
       total_work_years: 6,
       skills: ['React', 'Vue.js', 'TypeScript', '微前端'],
       tags: ['前端', '高级'],
-      risk_score: 28,
+      risk_score: 72,
       risk_level: 'medium',
       created_at: '2026-07-01T10:00:00Z',
       updated_at: '2026-07-01T10:00:00Z',
@@ -341,7 +434,7 @@ export async function mockMatchJob(): Promise<JobMatchResponse> {
           '候选人具备 TypeScript 和前端架构经验，技术栈高度匹配',
           '6 年工作经验，满足岗位年限要求',
         ],
-        risk_score: 28,
+        risk_score: 72,
         risk_level: 'medium',
       },
       {

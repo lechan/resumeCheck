@@ -1,0 +1,440 @@
+{
+  "schema_version": "1.0.0",
+  "resume_id": "res_d4c31a485f72",
+  "source": {
+    "file_name": "周子轩_JAVA开发工程师.docx",
+    "file_type": "docx",
+    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "file_size": 16487,
+    "language": "zh-CN",
+    "pages": 1,
+    "upload_time": "2026-07-08T08:21:30.422376Z"
+  },
+  "parse_meta": {
+    "parser_chain": ["docx_text"],
+    "parse_confidence": 0.95,
+    "ocr_used": false,
+    "layout_used": false,
+    "raw_text": "周子轩\n（网络查找，非真实数据）\n一、基本信息\n姓名：周子轩｜性别：男｜年龄：24\n学历：本科｜工作年限：2 年｜所在地：江苏南京\n求职意向：Java 开发工程师｜到岗时间：随时\n联系方式：手机（139XXXX1234）｜邮箱：zhouzixuan@163.com\n二、教育经历\n学校名称：南京工程学院｜学历：本科｜专业：计算机科学与技术\n就读时间：2018.09-2022.06\n主修课程：Java 程序设计、数据结构、数据库原理、Spring Boot 开发、计算机网络、操作系统 荣誉奖项：校级三等奖学金、优秀毕业生、校级程序设计竞赛优秀奖\n三、个人简介\n拥有 2 年 Java 后端开发工作经验，熟悉后端开发全流程，掌握 Java、Spring Boot、MyBatis、MySQL、Redis 等主流技术栈。能够独立完成接口开发、业务实现、数据库设计与问题排查，编码规范、学习能力强，具备良好的逻辑思维与团队协作意识，可快速上手业务开发，稳定完成开发任务。\n四、核心技能\n后端开发：熟练使用 Java、Spring Boot、MyBatis、Spring MVC\n数据库：MySQL、Redis 基础使用，SQL 编写、索引优化、事务处理\n工具使用：Git、Maven、Postman、IDEA、Navicat\n业务能力：需求理解、接口开发、联调测试、问题排查\n综合素养：学习能力强、做事严谨、沟通顺畅、抗压性好\n五、工作经历\n公司A   Java 开发工程师   入职时间：2022.07 - 至今\n工作概述：负责公司内部管理系统与业务平台后端开发，参与需求沟通、接口实现、功能测试、问题修复及系统日常维护，配合团队完成版本迭代与上线交付。\n核心工作成果\n独立完成用户管理、权限控制、数据查询、表单提交等常用模块开发，保障功能稳定运行。\n参与数据库表结构设计，编写高效 SQL 语句，优化查询逻辑，提升系统响应速度。\n配合前端完成接口联调，及时修复测试 BUG，保证版本按时上线。\n负责线上问题排查与日志分析，快速定位并解决故障，提升系统可用性。\n遵守团队开发规范，使用 Git 进行版本管理，保证代码质量与协作效率。\n六、自我评价\n具备 2 年企业级 Java 开发实战经验，技术基础扎实，编码习惯良好。工作认真负责、执行力强，善于学习新技术并快速应用到实际开发中。具备良好的沟通能力与团队协作意识，能够积极配合团队完成各项开发任务，快速适应岗位需求并持续提升自身技术能力。",
+    "raw_blocks": [
+      {
+        "block_id": "docx_p_1",
+        "text": "周子轩",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_2",
+        "text": "（网络查找，非真实数据）",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_3",
+        "text": "一、基本信息",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_4",
+        "text": "姓名：周子轩｜性别：男｜年龄：24",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_5",
+        "text": "学历：本科｜工作年限：2 年｜所在地：江苏南京",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_6",
+        "text": "求职意向：Java 开发工程师｜到岗时间：随时",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_7",
+        "text": "联系方式：手机（139XXXX1234）｜邮箱：zhouzixuan@163.com",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_8",
+        "text": "二、教育经历",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_9",
+        "text": "学校名称：南京工程学院｜学历：本科｜专业：计算机科学与技术",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_10",
+        "text": "就读时间：2018.09-2022.06",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_11",
+        "text": "主修课程：Java 程序设计、数据结构、数据库原理、Spring Boot 开发、计算机网络、操作系统 荣誉奖项：校级三等奖学金、优秀毕业生、校级程序设计竞赛优秀奖",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_12",
+        "text": "三、个人简介",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_13",
+        "text": "拥有 2 年 Java 后端开发工作经验，熟悉后端开发全流程，掌握 Java、Spring Boot、MyBatis、MySQL、Redis 等主流技术栈。能够独立完成接口开发、业务实现、数据库设计与问题排查，编码规范、学习能力强，具备良好的逻辑思维与团队协作意识，可快速上手业务开发，稳定完成开发任务。",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_14",
+        "text": "四、核心技能",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_15",
+        "text": "后端开发：熟练使用 Java、Spring Boot、MyBatis、Spring MVC",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_16",
+        "text": "数据库：MySQL、Redis 基础使用，SQL 编写、索引优化、事务处理",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_17",
+        "text": "工具使用：Git、Maven、Postman、IDEA、Navicat",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_18",
+        "text": "业务能力：需求理解、接口开发、联调测试、问题排查",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_19",
+        "text": "综合素养：学习能力强、做事严谨、沟通顺畅、抗压性好",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_20",
+        "text": "五、工作经历",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_21",
+        "text": "公司A   Java 开发工程师   入职时间：2022.07 - 至今",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_22",
+        "text": "工作概述：负责公司内部管理系统与业务平台后端开发，参与需求沟通、接口实现、功能测试、问题修复及系统日常维护，配合团队完成版本迭代与上线交付。",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_23",
+        "text": "核心工作成果",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_24",
+        "text": "独立完成用户管理、权限控制、数据查询、表单提交等常用模块开发，保障功能稳定运行。",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_25",
+        "text": "参与数据库表结构设计，编写高效 SQL 语句，优化查询逻辑，提升系统响应速度。",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_26",
+        "text": "配合前端完成接口联调，及时修复测试 BUG，保证版本按时上线。",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_27",
+        "text": "负责线上问题排查与日志分析，快速定位并解决故障，提升系统可用性。",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_28",
+        "text": "遵守团队开发规范，使用 Git 进行版本管理，保证代码质量与协作效率。",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_29",
+        "text": "六、自我评价",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      },
+      {
+        "block_id": "docx_p_30",
+        "text": "具备 2 年企业级 Java 开发实战经验，技术基础扎实，编码习惯良好。工作认真负责、执行力强，善于学习新技术并快速应用到实际开发中。具备良好的沟通能力与团队协作意识，能够积极配合团队完成各项开发任务，快速适应岗位需求并持续提升自身技术能力。",
+        "page": 1,
+        "bbox": null,
+        "source": "docx_paragraph"
+      }
+    ]
+  },
+  "candidate": {
+    "name": {
+      "value": "周子轩",
+      "confidence": 0.98,
+      "evidence": [],
+      "derived": false
+    },
+    "gender": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": [],
+      "derived": false
+    },
+    "birth_date": {
+      "value": null,
+      "date_precision": null,
+      "confidence": 0.0,
+      "evidence": [],
+      "derived": false
+    },
+    "age": {
+      "value": null,
+      "confidence": 0.0,
+      "derived": false
+    },
+    "phone": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": [],
+      "derived": false
+    },
+    "email": {
+      "value": "zhouzixuan@163.com",
+      "confidence": 0.95,
+      "evidence": [],
+      "derived": false
+    },
+    "current_city": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": [],
+      "derived": false
+    },
+    "highest_degree": {
+      "value": "本科",
+      "confidence": 0.8,
+      "evidence": [],
+      "derived": true
+    },
+    "total_work_years": {
+      "value": 4.1,
+      "confidence": 0.75,
+      "derived": true
+    }
+  },
+  "education": [
+    {
+      "edu_id": "edu_1",
+      "school_name": {
+        "value": "南京工程学院",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "school_type": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "major": {
+        "value": "学校名称：",
+        "confidence": 0.78,
+        "evidence": [],
+        "derived": false
+      },
+      "degree": {
+        "value": "本科",
+        "confidence": 0.8,
+        "evidence": [],
+        "derived": false
+      },
+      "education_type": "unknown",
+      "start_date": {
+        "value": "2018-09",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "end_date": {
+        "value": "2022-06",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "is_current": false,
+      "description": {
+        "value": "学校名称：南京工程学院｜学历：本科｜专业：计算机科学与技术 就读时间：2018.09-2022.06 主修课程：Java 程序设计、数据结构、数据库原理、Spring Boot 开发、计算机网络、操作系统 荣誉奖项：校级三等奖学金、优秀毕业生、校级程序设计竞赛优秀奖 三、个人简介 拥有 2 年 Java 后端开发工作经验，熟悉后端开发全流程，掌握 Java、Spring Boot、MyBatis、MySQL、Redis 等主流技术栈。能够独立完成接口开发、业务实现、数据库设计与问题排查，编码规范、学习能力强，具备良好的逻辑思维与团队协作意识，可快速上手业务开发，稳定完成开发任务。 四、核心技能 后端开发：熟练使用 Java、Spring Boot、MyBatis、Spring MVC 数据库：MySQL、Redis 基础使用，SQL 编写、索引优化、事务处理 工具使用：Git、Maven、Postman、IDEA、Navicat 业务能力：需求理解、接口开发、联调测试、问题排查 综合素养：学习能力强、做事严谨、沟通顺畅、抗压性好",
+        "confidence": 0.65,
+        "evidence": [],
+        "derived": false
+      }
+    }
+  ],
+  "work_experience": [
+    {
+      "work_id": "work_1",
+      "company_name": {
+        "value": "公司A",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "company_alias": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "industry": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "department": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "title": {
+        "value": "Java 开发工程师",
+        "confidence": 0.7,
+        "evidence": [],
+        "derived": false
+      },
+      "level": "unknown",
+      "employment_type": "full_time",
+      "start_date": {
+        "value": "2022-07",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "end_date": {
+        "value": "2026-07",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "is_current": true,
+      "duration_months": {
+        "value": 49.0,
+        "confidence": 0.8,
+        "derived": true
+      },
+      "location": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "description": {
+        "value": "公司A   Java 开发工程师   入职时间：2022.07 - 至今 工作概述：负责公司内部管理系统与业务平台后端开发，参与需求沟通、接口实现、功能测试、问题修复及系统日常维护，配合团队完成版本迭代与上线交付。 核心工作成果 独立完成用户管理、权限控制、数据查询、表单提交等常用模块开发，保障功能稳定运行。 参与数据库表结构设计，编写高效 SQL 语句，优化查询逻辑，提升系统响应速度。 配合前端完成接口联调，及时修复测试 BUG，保证版本按时上线。 负责线上问题排查与日志分析，快速定位并解决故障，提升系统可用性。 遵守团队开发规范，使用 Git 进行版本管理，保证代码质量与协作效率。",
+        "confidence": 0.68,
+        "evidence": [],
+        "derived": false
+      },
+      "achievements": [],
+      "management_scope": {
+        "team_size": null,
+        "budget": null,
+        "confidence": 0.0
+      }
+    }
+  ],
+  "project_experience": [],
+  "skills": [],
+  "certificates": [],
+  "languages": [],
+  "self_evaluation": {
+    "text": "具备 2 年企业级 Java 开发实战经验，技术基础扎实，编码习惯良好。工作认真负责、执行力强，善于学习新技术并快速应用到实际开发中。具备良好的沟通能力与团队协作意识，能够积极配合团队完成各项开发任务，快速适应岗位需求并持续提升自身技术能力。",
+    "confidence": 0.5
+  },
+  "timeline_index": [
+    {
+      "item_type": "education",
+      "item_id": "edu_1",
+      "label": "南京工程学院 / 本科",
+      "start_date": "2018-09",
+      "end_date": "2022-06",
+      "is_current": false
+    },
+    {
+      "item_type": "work",
+      "item_id": "work_1",
+      "label": "公司A / Java 开发工程师",
+      "start_date": "2022-07",
+      "end_date": "2026-07",
+      "is_current": true
+    }
+  ],
+  "quality_flags": []
+}

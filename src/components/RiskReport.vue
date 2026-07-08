@@ -30,24 +30,44 @@ function severityLabel(severity: string) {
   <div class="risk-report">
     <h3 class="section-title">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M10 2L1 17H19L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M10 8V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="10" cy="14.5" r="0.75" fill="currentColor"/>
+        <path
+          d="M10 2L1 17H19L10 2Z"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        />
+        <path d="M10 8V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        <circle cx="10" cy="14.5" r="0.75" fill="currentColor" />
       </svg>
       风险详情
       <span class="risk-count" v-if="report">{{ report.risk_items.length }} 项</span>
     </h3>
 
-    <template v-if="report && report.risk_items.length > 0">
-      <div class="summary-box">
+    <template v-if="report">
+      <!-- 摘要 -->
+      <div v-if="report.summary.major_findings.length" class="summary-box">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="summary-icon">
-          <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
-          <path d="M8 4V8.5M8 11V11.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2" />
+          <path
+            d="M8 4V8.5M8 11V11.01"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
         </svg>
-        {{ report.summary }}
+        <div class="summary-list">
+          <p
+            v-for="(finding, idx) in report.summary.major_findings"
+            :key="idx"
+            class="summary-item"
+          >
+            {{ finding }}
+          </p>
+        </div>
       </div>
 
-      <div class="risk-items">
+      <!-- 风险项 -->
+      <div class="risk-items" v-if="report.risk_items.length > 0">
         <div
           v-for="item in report.risk_items"
           :key="item.rule_id"
@@ -61,12 +81,7 @@ function severityLabel(severity: string) {
             <span class="risk-category" :style="{ color: severityStyle(item.severity).text }">
               {{ item.category }}
             </span>
-            <span
-              class="risk-severity"
-              :style="{
-                background: severityStyle(item.severity).text,
-              }"
-            >
+            <span class="risk-severity" :style="{ background: severityStyle(item.severity).text }">
               {{ severityLabel(item.severity) }}
             </span>
           </div>
@@ -81,15 +96,22 @@ function severityLabel(severity: string) {
           </div>
         </div>
       </div>
-    </template>
 
-    <div class="empty-state" v-else-if="report">
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M20 14V22M20 27V27.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <p>未发现风险项</p>
-    </div>
+      <!-- 无风险项 -->
+      <div class="empty-state" v-if="report.risk_items.length === 0">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="18" stroke="#22c55e" stroke-width="1.5" />
+          <path
+            d="M12 20L18 26L28 14"
+            stroke="#22c55e"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <p>未发现风险项</p>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -127,15 +149,25 @@ function severityLabel(severity: string) {
   border: 1px solid var(--color-border);
   border-radius: 10px;
   padding: 14px 16px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--color-text-secondary);
 }
 
 .summary-icon {
   color: var(--color-accent);
   flex-shrink: 0;
   margin-top: 2px;
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summary-item {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
 }
 
 .risk-items {

@@ -1,0 +1,20 @@
+{
+  "total_candidates_scanned": 1,
+  "matched_count": 1,
+  "items": [
+    {
+      "library_id": "lib_3585675ef294",
+      "resume_id": "res_3a1a9c9b98ca",
+      "candidate_name": "周铭远",
+      "current_title": "直播生态运营 （外包）",
+      "match_score": 0.0,
+      "matched_skills": [],
+      "missing_skills": [],
+      "matched_keywords": [],
+      "missing_keywords": [],
+      "reasons": ["风险等级为 medium，已扣减 5.0 分"],
+      "risk_score": 69,
+      "risk_level": "medium"
+    }
+  ]
+}

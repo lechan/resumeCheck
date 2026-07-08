@@ -1,0 +1,11 @@
+{
+  "report_id": "rep_5cebda61b0d9",
+  "resume_id": "res_e55193e0015b",
+  "risk_score": 100,
+  "risk_level": "low",
+  "risk_items": [],
+  "summary": {
+    "major_findings": ["未发现明显高优先级风险"]
+  },
+  "generated_at": "2026-07-08T08:11:48.912201Z"
+}

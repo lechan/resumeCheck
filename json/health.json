@@ -1,0 +1,9 @@
+{
+  "status": "ok",
+  "services": {
+    "db": "stub",
+    "redis": "stub",
+    "storage": "stub"
+  },
+  "time": "2026-07-08T08:29:40.485292"
+}

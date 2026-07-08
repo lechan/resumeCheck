@@ -1,0 +1,709 @@
+{
+  "schema_version": "1.0.0",
+  "resume_id": "res_b3f335cf4f70",
+  "source": {
+    "file_name": "创作者拓展规划-周铭远.pdf",
+    "file_type": "pdf",
+    "mime_type": "application/pdf",
+    "file_size": 67987,
+    "language": "zh-CN",
+    "pages": 2,
+    "upload_time": "2026-07-08T08:27:22.520528Z"
+  },
+  "parse_meta": {
+    "parser_chain": ["pdf_text", "pdf_text"],
+    "parse_confidence": 0.92,
+    "ocr_used": false,
+    "layout_used": false,
+    "raw_text": "（网络查找，非真实数据）\n求职简历\n姓名：周铭远\n电话：176****3356\n邮箱：zhoumingyuan@outlook.com\n教育经历\n郑州大学  |  数字媒体艺术                2015.09 - 2019.07\n实习情况：      光影传媒有限公司       新媒体运营\n      运营二十万粉级科技类自媒体矩阵，负责内容策划与数据复盘\n工作经历\n枫火数科有限公司  |  直播生态运营（外包）       2025.06 - 至今\n（1）独立负责《苍之纪元》、《灵域觉醒》直播生态运营，创作者激励政策的制定和结算，\n搭建主播矩阵\n（2）根据游戏付费节点和社区热点，通过活动包装和内容调优指导主播输出多元化内容，推\n动游戏曝光量提升，为游戏提供新进和留存付费\n跃动网络科技  |  游戏社群运营                      2024.03 - 2025.06\n（1）负责《蛋仔派对》、《第五人格》、《光遇》直播作者运营\n（2）通过对创作者「认知建立-调优诊断-内容产出」搭建分层运营体系，推动蛋仔派对单日\n大盘DAU突破420万（均值240万）并复用至第五人格、光遇等游戏版区\n（3）结合游戏版本和当下热点话题，设计社区垂类激励活动，丰富社区生态建设。打造KOL\n核心用户圈、策划差异化UGC内容，挖掘潜力新生创作者、召回促活等方式实现用户增长\n星图文化传媒  |  直播运营                            2021.12 - 2023.12\n通过匹配达人特性，撮合平台优质达人对接合作，策划达人直播方案，监控直播数据复盘达\n人表现并提出改进策略\n云帆互动科技  |  直播运营                            2019.08 - 2021.10\n结合用户需求投放素材内容，包装产品核心卖点和优势提升直播转化率\n游戏项目经验\n游戏：苍之纪元、灵域觉醒      品类：RPG      方向：创作者生态运营      周期：2025.06 -\n2026.01\n（1）生态体系建设：产品上线期从0-1搭建主播生态，持续推进主播挖掘、引入与培养，通\n过阶梯扶持、内容教育、签约管理与玩法调研，实现主播梯队的健康增长与数据跃迁。\n（2）长线运营动作：迭代主播合作政策与激励方案，稳定看播规模，结合版本节点及节假日\n设计专题推广（如主播联动、人气赛事等）以提升观看数据。\n游戏：蛋仔派对                 品类：派对      方向：创作者社群运营      周期：2024.03 - 2025.06\n（1）游戏内容日开播UV1400→3500，增长176%，ACU1000+核心用户扩容32%，ACU100+\n重点用户扩容40%，独家签约用户数增加30名。\n（2）UGC和PGC内容呈现。促进核心作者产出地图设计赛、趣味挑战赛、跨主播联动等UGC\n内容，树立标杆案例产生破圈效应，通过大带小和主播/内容筛选机制，提升整体内容质量。",
+    "raw_blocks": [
+      {
+        "block_id": "pdf_1_1",
+        "text": "（网络查找，非真实数据）",
+        "page": 1,
+        "bbox": [243.63784790039062, 64.806640625, 351.6378479003906, 73.85498046875],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_2",
+        "text": "求职简历",
+        "page": 1,
+        "bbox": [265.6378479003906, 89.45068359375, 329.6378479003906, 105.53662109375],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_3",
+        "text": "姓名：周铭远",
+        "page": 1,
+        "bbox": [76.86614227294922, 122.2763671875, 142.86614990234375, 133.33544921875],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_4",
+        "text": "电话：176****3356",
+        "page": 1,
+        "bbox": [76.86614227294922, 142.2763671875, 176.53713989257812, 153.33544921875],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_5",
+        "text": "邮箱：zhoumingyuan@outlook.com",
+        "page": 1,
+        "bbox": [76.86614227294922, 162.2763671875, 254.40614318847656, 173.33544921875],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_6",
+        "text": "教育经历",
+        "page": 1,
+        "bbox": [76.86614227294922, 202.51123046875, 124.86614227294922, 214.57568359375],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_7",
+        "text": "郑州大学  |  数字媒体艺术                2015.09 - 2019.07",
+        "page": 1,
+        "bbox": [76.86614227294922, 226.158935546875, 326.1466369628906, 236.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_8",
+        "text": "实习情况：      光影传媒有限公司       新媒体运营",
+        "page": 1,
+        "bbox": [76.86614227294922, 248.158935546875, 301.3561096191406, 258.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_9",
+        "text": "运营二十万粉级科技类自媒体矩阵，负责内容策划与数据复盘",
+        "page": 1,
+        "bbox": [76.86614227294922, 264.158935546875, 376.74615478515625, 274.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_10",
+        "text": "工作经历",
+        "page": 1,
+        "bbox": [76.86614227294922, 304.51123046875, 124.86614227294922, 316.57568359375],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_11",
+        "text": "枫火数科有限公司  |  直播生态运营（外包）       2025.06 - 至今",
+        "page": 1,
+        "bbox": [76.86614227294922, 328.158935546875, 369.0496826171875, 338.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_12",
+        "text": "（1）独立负责《苍之纪元》、《灵域觉醒》直播生态运营，创作者激励政策的制定和结算，",
+        "page": 1,
+        "bbox": [90.86614227294922, 347.158935546875, 516.651611328125, 357.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_13",
+        "text": "搭建主播矩阵",
+        "page": 1,
+        "bbox": [90.86614227294922, 363.158935546875, 153.86614990234375, 373.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_14",
+        "text": "（2）根据游戏付费节点和社区热点，通过活动包装和内容调优指导主播输出多元化内容，推",
+        "page": 1,
+        "bbox": [90.86614227294922, 383.158935546875, 516.651611328125, 393.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_15",
+        "text": "动游戏曝光量提升，为游戏提供新进和留存付费",
+        "page": 1,
+        "bbox": [90.86614227294922, 399.158935546875, 311.36614990234375, 409.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_16",
+        "text": "跃动网络科技  |  游戏社群运营                      2024.03 - 2025.06",
+        "page": 1,
+        "bbox": [76.86614227294922, 421.158935546875, 363.52655029296875, 431.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_17",
+        "text": "（1）负责《蛋仔派对》、《第五人格》、《光遇》直播作者运营",
+        "page": 1,
+        "bbox": [90.86614227294922, 440.158935546875, 390.6516418457031, 450.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_18",
+        "text": "（2）通过对创作者「认知建立-调优诊断-内容产出」搭建分层运营体系，推动蛋仔派对单日",
+        "page": 1,
+        "bbox": [90.86614227294922, 460.158935546875, 512.9136352539062, 470.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_19",
+        "text": "大盘DAU突破420万（均值240万）并复用至第五人格、光遇等游戏版区",
+        "page": 1,
+        "bbox": [90.86614227294922, 476.158935546875, 419.47418212890625, 486.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_20",
+        "text": "（3）结合游戏版本和当下热点话题，设计社区垂类激励活动，丰富社区生态建设。打造KOL",
+        "page": 1,
+        "bbox": [90.86614227294922, 496.158935546875, 514.6776733398438, 506.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_21",
+        "text": "核心用户圈、策划差异化UGC内容，挖掘潜力新生创作者、召回促活等方式实现用户增长",
+        "page": 1,
+        "bbox": [90.86614227294922, 512.158935546875, 500.2716369628906, 522.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_22",
+        "text": "星图文化传媒  |  直播运营                            2021.12 - 2023.12",
+        "page": 1,
+        "bbox": [76.86614227294922, 534.158935546875, 358.90655517578125, 544.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_23",
+        "text": "通过匹配达人特性，撮合平台优质达人对接合作，策划达人直播方案，监控直播数据复盘达",
+        "page": 1,
+        "bbox": [90.86614227294922, 553.158935546875, 510.86614990234375, 563.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_24",
+        "text": "人表现并提出改进策略",
+        "page": 1,
+        "bbox": [90.86614227294922, 569.158935546875, 195.86614990234375, 579.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_25",
+        "text": "云帆互动科技  |  直播运营                            2019.08 - 2021.10",
+        "page": 1,
+        "bbox": [76.86614227294922, 591.158935546875, 358.90655517578125, 601.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_26",
+        "text": "结合用户需求投放素材内容，包装产品核心卖点和优势提升直播转化率",
+        "page": 1,
+        "bbox": [90.86614227294922, 610.158935546875, 416.36614990234375, 620.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_27",
+        "text": "游戏项目经验",
+        "page": 1,
+        "bbox": [76.86614227294922, 650.51123046875, 148.86614990234375, 662.57568359375],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_28",
+        "text": "游戏：苍之纪元、灵域觉醒      品类：RPG      方向：创作者生态运营      周期：2025.06 -",
+        "page": 1,
+        "bbox": [76.86614227294922, 674.158935546875, 483.13214111328125, 684.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_29",
+        "text": "2026.01",
+        "page": 1,
+        "bbox": [76.86614227294922, 690.158935546875, 114.39314270019531, 700.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_30",
+        "text": "（1）生态体系建设：产品上线期从0-1搭建主播生态，持续推进主播挖掘、引入与培养，通",
+        "page": 1,
+        "bbox": [90.86614227294922, 709.158935546875, 510.6036376953125, 719.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_31",
+        "text": "过阶梯扶持、内容教育、签约管理与玩法调研，实现主播梯队的健康增长与数据跃迁。",
+        "page": 1,
+        "bbox": [90.86614227294922, 725.158935546875, 489.86614990234375, 735.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_32",
+        "text": "（2）长线运营动作：迭代主播合作政策与激励方案，稳定看播规模，结合版本节点及节假日",
+        "page": 1,
+        "bbox": [90.86614227294922, 745.1589965820312, 516.651611328125, 755.7153930664062],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_1_33",
+        "text": "设计专题推广（如主播联动、人气赛事等）以提升观看数据。",
+        "page": 1,
+        "bbox": [90.86614227294922, 761.1589965820312, 374.36614990234375, 771.7153930664062],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_2_1",
+        "text": "游戏：蛋仔派对                 品类：派对      方向：创作者社群运营      周期：2024.03 - 2025.06",
+        "page": 2,
+        "bbox": [76.86614227294922, 65.158935546875, 502.4311828613281, 75.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_2_2",
+        "text": "（1）游戏内容日开播UV1400→3500，增长176%，ACU1000+核心用户扩容32%，ACU100+",
+        "page": 2,
+        "bbox": [90.86614227294922, 84.158935546875, 515.1397094726562, 94.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_2_3",
+        "text": "重点用户扩容40%，独家签约用户数增加30名。",
+        "page": 2,
+        "bbox": [90.86614227294922, 100.158935546875, 311.670654296875, 110.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_2_4",
+        "text": "（2）UGC和PGC内容呈现。促进核心作者产出地图设计赛、趣味挑战赛、跨主播联动等UGC",
+        "page": 2,
+        "bbox": [90.86614227294922, 120.158935546875, 515.087158203125, 130.71533203125],
+        "source": "pdf_text"
+      },
+      {
+        "block_id": "pdf_2_5",
+        "text": "内容，树立标杆案例产生破圈效应，通过大带小和主播/内容筛选机制，提升整体内容质量。",
+        "page": 2,
+        "bbox": [90.86614227294922, 136.158935546875, 514.7826538085938, 146.71533203125],
+        "source": "pdf_text"
+      }
+    ]
+  },
+  "candidate": {
+    "name": {
+      "value": "周铭远",
+      "confidence": 0.98,
+      "evidence": [],
+      "derived": false
+    },
+    "gender": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": [],
+      "derived": false
+    },
+    "birth_date": {
+      "value": null,
+      "date_precision": null,
+      "confidence": 0.0,
+      "evidence": [],
+      "derived": false
+    },
+    "age": {
+      "value": null,
+      "confidence": 0.0,
+      "derived": false
+    },
+    "phone": {
+      "value": "176****3356",
+      "confidence": 0.95,
+      "evidence": [],
+      "derived": false
+    },
+    "email": {
+      "value": "zhoumingyuan@outlook.com",
+      "confidence": 0.95,
+      "evidence": [],
+      "derived": false
+    },
+    "current_city": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": [],
+      "derived": false
+    },
+    "highest_degree": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": [],
+      "derived": false
+    },
+    "total_work_years": {
+      "value": 4.8,
+      "confidence": 0.75,
+      "derived": true
+    }
+  },
+  "education": [
+    {
+      "edu_id": "edu_1",
+      "school_name": {
+        "value": "郑州大学",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "school_type": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "major": {
+        "value": "数字媒体艺术",
+        "confidence": 0.78,
+        "evidence": [],
+        "derived": false
+      },
+      "degree": {
+        "value": "",
+        "confidence": 0.2,
+        "evidence": [],
+        "derived": false
+      },
+      "education_type": "unknown",
+      "start_date": {
+        "value": "2015-09",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "end_date": {
+        "value": "2019-07",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "is_current": false,
+      "description": {
+        "value": "郑州大学  |  数字媒体艺术                2015.09 - 2019.07",
+        "confidence": 0.65,
+        "evidence": [],
+        "derived": false
+      }
+    }
+  ],
+  "work_experience": [
+    {
+      "work_id": "work_1",
+      "company_name": {
+        "value": "枫火数科有限公司",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "company_alias": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "industry": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "department": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "title": {
+        "value": "直播生态运营 （外包）",
+        "confidence": 0.7,
+        "evidence": [],
+        "derived": false
+      },
+      "level": "unknown",
+      "employment_type": "contract",
+      "start_date": {
+        "value": "2025-06",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "end_date": {
+        "value": "2026-07",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "is_current": true,
+      "duration_months": {
+        "value": 14.0,
+        "confidence": 0.8,
+        "derived": true
+      },
+      "location": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "description": {
+        "value": "枫火数科有限公司  |  直播生态运营（外包）       2025.06 - 至今 （1）独立负责《苍之纪元》、《灵域觉醒》直播生态运营，创作者激励政策的制定和结算， 搭建主播矩阵 （2）根据游戏付费节点和社区热点，通过活动包装和内容调优指导主播输出多元化内容，推",
+        "confidence": 0.68,
+        "evidence": [],
+        "derived": false
+      },
+      "achievements": [],
+      "management_scope": {
+        "team_size": null,
+        "budget": null,
+        "confidence": 0.0
+      }
+    },
+    {
+      "work_id": "work_2",
+      "company_name": {
+        "value": "动游戏曝光量提升",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "company_alias": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "industry": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "department": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "title": {
+        "value": "游戏社群运营",
+        "confidence": 0.7,
+        "evidence": [],
+        "derived": false
+      },
+      "level": "unknown",
+      "employment_type": "full_time",
+      "start_date": {
+        "value": "2024-03",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "end_date": {
+        "value": "2025-06",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "is_current": false,
+      "duration_months": {
+        "value": 16.0,
+        "confidence": 0.8,
+        "derived": true
+      },
+      "location": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "description": {
+        "value": "动游戏曝光量提升，为游戏提供新进和留存付费 跃动网络科技  |  游戏社群运营                      2024.03 - 2025.06 （1）负责《蛋仔派对》、《第五人格》、《光遇》直播作者运营 （2）通过对创作者「认知建立-调优诊断-内容产出」搭建分层运营体系，推动蛋仔派对单日 大盘DAU突破420万（均值240万）并复用至第五人格、光遇等游戏版区 （3）结合游戏版本和当下热点话题，设计社区垂类激励活动，丰富社区生态建设。打造KOL",
+        "confidence": 0.68,
+        "evidence": [],
+        "derived": false
+      },
+      "achievements": [],
+      "management_scope": {
+        "team_size": null,
+        "budget": null,
+        "confidence": 0.0
+      }
+    },
+    {
+      "work_id": "work_4",
+      "company_name": {
+        "value": "人表现并提出改进策略",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "company_alias": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "industry": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "department": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "title": {
+        "value": "直播运营",
+        "confidence": 0.7,
+        "evidence": [],
+        "derived": false
+      },
+      "level": "unknown",
+      "employment_type": "full_time",
+      "start_date": {
+        "value": "2019-08",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "end_date": {
+        "value": "2021-10",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "is_current": false,
+      "duration_months": {
+        "value": 27.0,
+        "confidence": 0.8,
+        "derived": true
+      },
+      "location": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "description": {
+        "value": "人表现并提出改进策略 云帆互动科技  |  直播运营                            2019.08 - 2021.10 结合用户需求投放素材内容，包装产品核心卖点和优势提升直播转化率",
+        "confidence": 0.68,
+        "evidence": [],
+        "derived": false
+      },
+      "achievements": [],
+      "management_scope": {
+        "team_size": null,
+        "budget": null,
+        "confidence": 0.0
+      }
+    }
+  ],
+  "project_experience": [
+    {
+      "project_id": "proj_1",
+      "project_name": {
+        "value": "苍之纪元、灵域觉醒",
+        "confidence": 0.75,
+        "evidence": [],
+        "derived": false
+      },
+      "role": {
+        "value": "创作者生态运营",
+        "confidence": 0.75,
+        "evidence": [],
+        "derived": false
+      },
+      "related_company": {
+        "value": null,
+        "confidence": 0.0,
+        "evidence": [],
+        "derived": false
+      },
+      "start_date": {
+        "value": "2025-06",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "end_date": {
+        "value": "2026-01",
+        "date_precision": "month",
+        "confidence": 0.82,
+        "evidence": [],
+        "derived": false
+      },
+      "description": {
+        "value": "游戏：苍之纪元、灵域觉醒      品类：RPG      方向：创作者生态运营      周期：2025.06 - 2026.01 （1）生态体系建设：产品上线期从0-1搭建主播生态，持续推进主播挖掘、引入与培养，通 过阶梯扶持、内容教育、签约管理与玩法调研，实现主播梯队的健康增长与数据跃迁。 （2）长线运营动作：迭代主播合作政策与激励方案，稳定看播规模，结合版本节点及节假日 设计专题推广（如主播联动、人气赛事等）以提升观看数据。 游戏：蛋仔派对                 品类：派对      方向：创作者社群运营      周期：2024.03 - 2025.06 （1）游戏内容日开播UV1400→3500，增长176%，ACU1000+核心用户扩容32%，ACU100+ 重点用户扩容40%，独家签约用户数增加30名。 （2）UGC和PGC内容呈现。促进核心作者产出地图设计赛、趣味挑战赛、跨主播联动等UGC 内容，树立标杆案例产生破圈效应，通过大带小和主播/内容筛选机制，提升整体内容质量。",
+        "confidence": 0.72,
+        "evidence": [],
+        "derived": false
+      },
+      "metrics": []
+    }
+  ],
+  "skills": [],
+  "certificates": [],
+  "languages": [],
+  "self_evaluation": {
+    "text": "",
+    "confidence": 0.5
+  },
+  "timeline_index": [
+    {
+      "item_type": "education",
+      "item_id": "edu_1",
+      "label": "郑州大学",
+      "start_date": "2015-09",
+      "end_date": "2019-07",
+      "is_current": false
+    },
+    {
+      "item_type": "work",
+      "item_id": "work_4",
+      "label": "人表现并提出改进策略 / 直播运营",
+      "start_date": "2019-08",
+      "end_date": "2021-10",
+      "is_current": false
+    },
+    {
+      "item_type": "work",
+      "item_id": "work_2",
+      "label": "动游戏曝光量提升 / 游戏社群运营",
+      "start_date": "2024-03",
+      "end_date": "2025-06",
+      "is_current": false
+    },
+    {
+      "item_type": "work",
+      "item_id": "work_1",
+      "label": "枫火数科有限公司 / 直播生态运营 （外包）",
+      "start_date": "2025-06",
+      "end_date": "2026-07",
+      "is_current": true
+    },
+    {
+      "item_type": "project",
+      "item_id": "proj_1",
+      "label": "苍之纪元、灵域觉醒",
+      "start_date": "2025-06",
+      "end_date": "2026-01",
+      "is_current": false
+    }
+  ],
+  "quality_flags": []
+}

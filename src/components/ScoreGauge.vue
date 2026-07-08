@@ -7,9 +7,14 @@ const props = defineProps<{
 }>()
 
 const circumference = 2 * Math.PI * 54
+
+// 风险分：分数越高越安全（100=低风险, 0=高风险）
+// 进度环填充比例 = 风险占比
+const riskPct = computed(() => {
+  return Math.min(Math.max(100 - props.score, 0), 100)
+})
 const offset = computed(() => {
-  const pct = Math.min(Math.max(props.score, 0), 100)
-  return circumference - (pct / 100) * circumference
+  return circumference - (riskPct.value / 100) * circumference
 })
 
 const gradientId = 'score-gradient'
@@ -30,14 +35,12 @@ const levelInfo = computed(() => {
     <svg width="160" height="160" viewBox="0 0 160 160">
       <defs>
         <linearGradient :id="gradientId" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#22c55e" />
+          <stop offset="0%" stop-color="#ef4444" />
           <stop offset="50%" stop-color="#eab308" />
-          <stop offset="100%" stop-color="#ef4444" />
+          <stop offset="100%" stop-color="#22c55e" />
         </linearGradient>
       </defs>
-      <!-- 背景环 -->
       <circle cx="80" cy="80" r="54" fill="none" stroke="var(--color-border)" stroke-width="10" />
-      <!-- 进度环 -->
       <circle
         cx="80"
         cy="80"
@@ -51,9 +54,8 @@ const levelInfo = computed(() => {
         transform="rotate(-90 80 80)"
         class="score-ring"
       />
-      <!-- 中心文字 -->
       <text x="80" y="72" text-anchor="middle" class="score-value">{{ score }}</text>
-      <text x="80" y="98" text-anchor="middle" class="score-label">风险指数</text>
+      <text x="80" y="98" text-anchor="middle" class="score-label">安全指数</text>
     </svg>
 
     <div class="score-level" :style="{ color: levelInfo.color, borderColor: levelInfo.color }">
