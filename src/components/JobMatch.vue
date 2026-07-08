@@ -13,6 +13,16 @@ import RiskReport from '@/components/RiskReport.vue'
 
 const useMock = ref(false)
 
+function riskLevelLabel(level: string) {
+  const map: Record<string, string> = {
+    low: '低风险',
+    medium: '中风险',
+    high: '高风险',
+    critical: '严重风险',
+  }
+  return map[level] || level
+}
+
 const jd = ref('')
 const requiredSkills = ref('')
 const minYears = ref<number | undefined>()
@@ -259,12 +269,26 @@ loadLibrary()
               <span>加载中...</span>
             </div>
             <template v-else-if="drawerDetail">
+              <div class="drawer-section" v-if="drawerDetail.resume">
+                <div class="drawer-source">
+                  <span class="source-tag" v-if="drawerDetail.resume.source.file_type">
+                    {{ drawerDetail.resume.source.file_type.toUpperCase() }}
+                  </span>
+                  <span class="source-filename">{{ drawerDetail.resume.source.file_name }}</span>
+                  <span class="source-meta" v-if="drawerDetail.resume.source.pages">
+                    {{ drawerDetail.resume.source.pages }} 页
+                  </span>
+                  <span class="source-meta" v-if="drawerDetail.resume.parse_meta.parse_confidence">
+                    置信度 {{ (drawerDetail.resume.parse_meta.parse_confidence * 100).toFixed(0) }}%
+                  </span>
+                </div>
+              </div>
               <div class="drawer-section" v-if="drawerDetail.risk_report">
                 <h4 class="drawer-section-title">风险评分</h4>
                 <div class="drawer-risk">
                   <span class="risk-big">{{ drawerDetail.risk_score }}/100</span>
                   <span class="risk-lvl" :class="'risk-' + drawerDetail.risk_level">{{
-                    drawerDetail.risk_level
+                    riskLevelLabel(drawerDetail.risk_level)
                   }}</span>
                 </div>
               </div>
@@ -700,6 +724,38 @@ loadLibrary()
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0 0 10px;
+}
+
+.drawer-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  background: var(--color-surface);
+  border-radius: 8px;
+}
+
+.source-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-accent);
+  background: rgba(0, 136, 204, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.source-filename {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  word-break: break-all;
+}
+
+.source-meta {
+  font-size: 11px;
+  color: var(--color-text-muted);
 }
 
 .drawer-risk {

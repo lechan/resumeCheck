@@ -24,6 +24,18 @@ function severityLabel(severity: string) {
   }
   return map[severity] || severity
 }
+
+function categoryLabel(category: string) {
+  const map: Record<string, string> = {
+    continuity: '履历连续性',
+    stability: '工作稳定性',
+    description: '描述真实性',
+    timeline: '时间逻辑',
+    project: '项目真实性',
+    job_hop: '跳槽频率',
+  }
+  return map[category] || category
+}
 </script>
 
 <template>
@@ -78,17 +90,34 @@ function severityLabel(severity: string) {
           }"
         >
           <div class="risk-item-header">
-            <span class="risk-category" :style="{ color: severityStyle(item.severity).text }">
-              {{ item.category }}
-            </span>
-            <span class="risk-severity" :style="{ background: severityStyle(item.severity).text }">
-              {{ severityLabel(item.severity) }}
-            </span>
+            <div class="risk-header-left">
+              <span class="risk-rule-name">{{ item.rule_name }}</span>
+              <span class="risk-category" :style="{ color: severityStyle(item.severity).text }">
+                {{ categoryLabel(item.category) }}
+              </span>
+            </div>
+            <div class="risk-header-right">
+              <span class="risk-impact" v-if="item.score_impact">{{ item.score_impact }} 分</span>
+              <span
+                class="risk-severity"
+                :style="{ background: severityStyle(item.severity).text }"
+              >
+                {{ severityLabel(item.severity) }}
+              </span>
+            </div>
           </div>
           <p class="risk-desc">{{ item.description }}</p>
-          <div class="risk-evidence" v-if="item.evidence">
+          <div class="risk-evidence" v-if="item.evidence.length">
             <span class="evidence-label">证据</span>
-            <span>{{ item.evidence }}</span>
+            <div class="evidence-list">
+              <div v-for="(ev, evi) in item.evidence" :key="evi" class="evidence-item">
+                <span v-if="ev.item_type">{{ ev.item_type }}</span>
+                <span v-if="ev.work_id">#{{ ev.work_id }}</span>
+                <span v-if="ev.end">结束: {{ ev.end }}</span>
+                <span v-if="ev.start">开始: {{ ev.start }}</span>
+                <span class="evidence-text" v-if="ev.text">{{ ev.text }}</span>
+              </div>
+            </div>
           </div>
           <div class="risk-suggestion" v-if="item.suggestion">
             <span class="suggestion-label">建议</span>
@@ -189,13 +218,45 @@ function severityLabel(severity: string) {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+}
+
+.risk-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.risk-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.risk-rule-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
 }
 
 .risk-category {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(107, 114, 128, 0.1);
+}
+
+.risk-impact {
+  font-size: 11px;
+  font-weight: 600;
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 1px 6px;
+  border-radius: 3px;
 }
 
 .risk-severity {
@@ -220,6 +281,7 @@ function severityLabel(severity: string) {
   font-size: 12px;
   line-height: 1.5;
   color: var(--color-text-secondary);
+  align-items: flex-start;
 }
 
 .evidence-label,
@@ -227,6 +289,33 @@ function severityLabel(severity: string) {
   font-weight: 600;
   color: var(--color-text-muted);
   flex-shrink: 0;
+}
+
+.evidence-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.evidence-item {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+}
+
+.evidence-item span {
+  background: rgba(107, 114, 128, 0.08);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.evidence-text {
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .empty-state {

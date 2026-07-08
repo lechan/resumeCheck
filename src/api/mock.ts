@@ -248,9 +248,12 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
         rule_name: '履历断层检测',
         category: '履历完整性',
         severity: 'medium',
+        hit: true,
         score_impact: 10,
         description: '2019-07 至 2019-09 期间存在约 2 个月空窗，无明确工作或学习记录。',
-        evidence: '毕业时间: 2019-07, 第一份工作开始时间: 2019-07，但存在间断。',
+        evidence: [
+          { text: '毕业时间: 2019-07, 第一份工作开始时间: 2019-07，但存在间断。' },
+        ],
         suggestion: '建议确认该时间段的具体去向，是否有未注明的培训或待业情况。',
       },
       {
@@ -258,9 +261,12 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
         rule_name: '跳槽频率检测',
         category: '稳定性评估',
         severity: 'low',
+        hit: true,
         score_impact: 8,
         description: '近 3 年内更换 1 次工作，跳槽频率在合理范围内。',
-        evidence: '2021-04 入职字节跳动, 2024-06 离职，共 2 段工作经历。',
+        evidence: [
+          { text: '2021-04 入职字节跳动, 2024-06 离职，共 2 段工作经历。' },
+        ],
         suggestion: '跳槽频率正常，但需关注离职原因是否合理。',
       },
       {
@@ -268,9 +274,12 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
         rule_name: '岗位描述模糊检测',
         category: '描述真实性',
         severity: 'low',
+        hit: true,
         score_impact: 5,
         description: '实习生阶段的工作描述较为简略，缺乏具体项目产出和量化指标。',
-        evidence: '描述仅提及"参与公司官网重构，使用 HTML/CSS/JS 完成页面开发"，无具体成果指标。',
+        evidence: [
+          { text: '描述仅提及"参与公司官网重构，使用 HTML/CSS/JS 完成页面开发"，无具体成果指标。' },
+        ],
         suggestion: '建议补充该段实习经历的具体产出和量化成果，增强简历可信度。',
       },
       {
@@ -278,10 +287,13 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
         rule_name: '时间线一致性校验',
         category: '时间逻辑',
         severity: 'high',
+        hit: true,
         score_impact: 15,
         description:
           '字节跳动入职时间 2021-04 与上一段美团离职时间 2021-03 之间仅间隔 1 个月，时间衔接正常。',
-        evidence: '美团离职: 2021-03, 字节跳动入职: 2021-04，间隔 1 个月。',
+        evidence: [
+          { text: '美团离职: 2021-03, 字节跳动入职: 2021-04，间隔 1 个月。' },
+        ],
         suggestion: '时间线衔接合理，未发现异常。',
       },
       {
@@ -289,9 +301,12 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
         rule_name: '项目时间越界检测',
         category: '项目真实性',
         severity: 'low',
+        hit: true,
         score_impact: 3,
         description: '所有项目经历时间均在对应工作经历时间范围内，未发现越界。',
-        evidence: '微前端架构项目(2022-03~2022-12)在字节跳动任职期间内。',
+        evidence: [
+          { text: '微前端架构项目(2022-03~2022-12)在字节跳动任职期间内。' },
+        ],
         suggestion: '项目时间符合逻辑。',
       },
     ],

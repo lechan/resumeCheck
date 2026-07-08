@@ -164,9 +164,10 @@ export interface RiskItem {
   rule_name: string
   category: string
   severity: 'low' | 'medium' | 'high' | 'critical'
+  hit: boolean
   score_impact: number
   description: string
-  evidence: string
+  evidence: Record<string, unknown>[]
   suggestion: string
 }
 
