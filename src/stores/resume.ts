@@ -56,7 +56,9 @@ export const useResumeStore = defineStore('resume', () => {
     error.value = null
     step.value = 'loading'
     try {
-      const result = useMock.value ? await mockUpload(file) : await uploadResume(file)
+      const result = useMock.value
+        ? await mockUpload(file)
+        : await uploadResume(file, {}, promptText.value)
       uploadResult.value = result
       await fetchResults(result.resume_id)
       step.value = 'result'

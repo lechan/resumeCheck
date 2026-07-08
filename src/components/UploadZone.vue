@@ -115,7 +115,7 @@ function clearFile() {
           <span class="file-name">{{ selectedFile.name }}</span>
           <span class="file-size">{{ (selectedFile.size / 1024).toFixed(1) }} KB</span>
         </div>
-        <button class="btn-remove" @click.stop="clearFile" title="移除文件">
+        <button class="btn-remove" @click.stop.prevent="clearFile" title="移除文件" type="button">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path
               d="M4 4L12 12M12 4L4 12"
@@ -150,6 +150,7 @@ function clearFile() {
   background: radial-gradient(ellipse at center, var(--color-accent) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.4s;
+  pointer-events: none;
 }
 
 .upload-zone:hover::before,

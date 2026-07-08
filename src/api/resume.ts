@@ -43,10 +43,17 @@ export async function getHealth(): Promise<HealthStatus> {
  * POST /api/v1/resumes/upload
  * 上传简历并触发解析
  */
-export async function uploadResume(file: File, options?: { force_ocr?: boolean }): Promise<UploadResponse> {
+export async function uploadResume(
+  file: File,
+  options?: { force_ocr?: boolean },
+  analysisPrompt?: string,
+): Promise<UploadResponse> {
   const formData = new FormData()
   formData.append('file', file)
   formData.append('options', JSON.stringify(options ?? {}))
+  if (analysisPrompt) {
+    formData.append('analysis_prompt', analysisPrompt)
+  }
 
   const { data } = await api.post<UploadResponse>('/resumes/upload', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
