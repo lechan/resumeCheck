@@ -1,12 +1,53 @@
-import type { UploadResponse, ResumeSchema, RiskReport } from '@/types/resume'
+import type {
+  UploadResponse,
+  ResumeSchema,
+  RiskReport,
+  RootInfo,
+  HealthStatus,
+  TaskStatus,
+  ReportDownload,
+  LibraryListItem,
+  LibraryDetail,
+  JobMatchResponse,
+  InterviewQuestionResponse,
+  ParseResult,
+} from '@/types/resume'
 
 // 模拟延迟
 function delay(ms = 800): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-// 模拟上传响应
-export async function mockUpload(_file: File, _forceOcr = false): Promise<UploadResponse> {
+// ===========================
+// Root & 健康检查
+// ===========================
+
+export async function mockRootInfo(): Promise<RootInfo> {
+  await delay(100)
+  return {
+    name: 'Resume Risk MVP',
+    version: '0.1.0',
+    docs: '/docs',
+  }
+}
+
+export async function mockHealth(): Promise<HealthStatus> {
+  await delay(100)
+  return {
+    status: 'ok',
+    services: { db: 'stub', redis: 'stub', storage: 'stub' },
+    time: new Date().toISOString(),
+  }
+}
+
+// ===========================
+// 简历解析
+// ===========================
+
+export async function mockUpload(
+  _file: File,
+  _options?: { force_ocr?: boolean },
+): Promise<UploadResponse> {
   await delay(600)
   return {
     resume_id: 'mock_res_001',
@@ -18,7 +59,19 @@ export async function mockUpload(_file: File, _forceOcr = false): Promise<Upload
   }
 }
 
-// 模拟结构化简历
+export async function mockResumeStatus(_resumeId: string): Promise<TaskStatus> {
+  await delay(200)
+  return {
+    resume_id: _resumeId,
+    task_id: 'mock_task_001',
+    status: 'done',
+    progress: 100,
+    current_stage: 'completed',
+    created_at: new Date(Date.now() - 5000).toISOString(),
+    updated_at: new Date().toISOString(),
+  }
+}
+
 export async function mockNormalizedResume(_resumeId: string): Promise<ResumeSchema> {
   await delay(400)
   return {
@@ -84,16 +137,7 @@ export async function mockNormalizedResume(_resumeId: string): Promise<ResumeSch
         description: '参与组件库标准化建设，制定组件 API 规范，编写文档和单元测试。',
       },
     ],
-    skills: [
-      'React',
-      'Vue.js',
-      'TypeScript',
-      '微前端',
-      'Webpack',
-      'Node.js',
-      '性能优化',
-      'Git',
-    ],
+    skills: ['React', 'Vue.js', 'TypeScript', '微前端', 'Webpack', 'Node.js', '性能优化', 'Git'],
     certificates: ['软考中级 - 软件设计师'],
     languages: ['英语 CET-6'],
     self_evaluation:
@@ -148,7 +192,8 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
         category: '时间逻辑',
         severity: 'high',
         score_impact: 15,
-        description: '字节跳动入职时间 2021-04 与上一段美团离职时间 2021-03 之间仅间隔 1 个月，时间衔接正常。',
+        description:
+          '字节跳动入职时间 2021-04 与上一段美团离职时间 2021-03 之间仅间隔 1 个月，时间衔接正常。',
         evidence: '美团离职: 2021-03, 字节跳动入职: 2021-04，间隔 1 个月。',
         suggestion: '时间线衔接合理，未发现异常。',
       },
@@ -166,5 +211,212 @@ export async function mockRiskReport(_resumeId: string): Promise<RiskReport> {
     summary:
       '该候选人整体风险指数为 28 分（中等风险）。主要关注点包括：毕业初期存在短期履历断层、实习生阶段经历描述偏弱。优势方面，近 3 年跳槽频率正常，工作经历时间线清晰连贯，项目经历与任职时间吻合。建议重点核实毕业空窗期原因。',
     generated_at: new Date().toISOString(),
+  }
+}
+
+export async function mockParseResult(_resumeId: string): Promise<ParseResult> {
+  await delay(300)
+  return {
+    parser_chain: ['docx_parser', 'text_extractor'],
+    parse_confidence: 0.92,
+    ocr_used: false,
+    layout_used: true,
+    raw_text: '张明远 高级前端工程师 ...',
+    raw_blocks: [],
+  }
+}
+
+export async function mockReportDownload(
+  _resumeId: string,
+  _format: string,
+): Promise<ReportDownload> {
+  await delay(200)
+  return {
+    resume_id: _resumeId,
+    format: _format,
+    download_url: `/api/v1/resumes/${_resumeId}/risk-report/download?format=${_format}`,
+  }
+}
+
+export async function mockReanalyze(_resumeId: string): Promise<TaskStatus> {
+  await delay(1000)
+  return {
+    resume_id: _resumeId,
+    task_id: 'mock_task_002',
+    status: 'done',
+    progress: 100,
+    current_stage: 'completed',
+    created_at: new Date(Date.now() - 3000).toISOString(),
+    updated_at: new Date().toISOString(),
+  }
+}
+
+// ===========================
+// 人才库
+// ===========================
+
+export async function mockImportToLibrary(): Promise<LibraryDetail> {
+  await delay(500)
+  return {
+    library_id: 'mock_lib_001',
+    resume_id: 'mock_res_001',
+    candidate_name: '张明远',
+    current_title: '高级前端工程师',
+    current_city: '杭州',
+    highest_degree: '本科',
+    total_work_years: 6,
+    skills: ['React', 'Vue.js', 'TypeScript', '微前端'],
+    tags: ['前端', '高级'],
+    risk_score: 28,
+    risk_level: 'medium',
+    source_label: '校园招聘',
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    resume: (await mockNormalizedResume('mock_res_001')) as ResumeSchema,
+    risk_report: (await mockRiskReport('mock_res_001')) as RiskReport,
+  }
+}
+
+export async function mockQueryLibrary(): Promise<LibraryListItem[]> {
+  await delay(400)
+  return [
+    {
+      library_id: 'mock_lib_001',
+      resume_id: 'mock_res_001',
+      candidate_name: '张明远',
+      current_title: '高级前端工程师',
+      current_city: '杭州',
+      highest_degree: '本科',
+      total_work_years: 6,
+      skills: ['React', 'Vue.js', 'TypeScript', '微前端'],
+      tags: ['前端', '高级'],
+      risk_score: 28,
+      risk_level: 'medium',
+      created_at: '2026-07-01T10:00:00Z',
+      updated_at: '2026-07-01T10:00:00Z',
+    },
+    {
+      library_id: 'mock_lib_002',
+      resume_id: 'mock_res_002',
+      candidate_name: '李思雨',
+      current_title: 'Java 开发工程师',
+      current_city: '北京',
+      highest_degree: '硕士',
+      total_work_years: 4,
+      skills: ['Java', 'Spring Boot', 'MySQL', 'Redis'],
+      tags: ['后端', '中级'],
+      risk_score: 15,
+      risk_level: 'low',
+      created_at: '2026-07-02T14:00:00Z',
+      updated_at: '2026-07-02T14:00:00Z',
+    },
+  ]
+}
+
+export async function mockGetLibraryDetail(_libraryId: string): Promise<LibraryDetail> {
+  return mockImportToLibrary()
+}
+
+// ===========================
+// 职位匹配
+// ===========================
+
+export async function mockMatchJob(): Promise<JobMatchResponse> {
+  await delay(600)
+  return {
+    total_candidates_scanned: 12,
+    matched_count: 2,
+    items: [
+      {
+        library_id: 'mock_lib_001',
+        resume_id: 'mock_res_001',
+        candidate_name: '张明远',
+        current_title: '高级前端工程师',
+        match_score: 85,
+        matched_skills: ['TypeScript', 'Node.js'],
+        missing_skills: ['React'],
+        matched_keywords: ['架构', '性能优化'],
+        missing_keywords: ['Spring'],
+        reasons: [
+          '候选人具备 TypeScript 和前端架构经验，技术栈高度匹配',
+          '6 年工作经验，满足岗位年限要求',
+        ],
+        risk_score: 28,
+        risk_level: 'medium',
+      },
+      {
+        library_id: 'mock_lib_002',
+        resume_id: 'mock_res_002',
+        candidate_name: '李思雨',
+        current_title: 'Java 开发工程师',
+        match_score: 72,
+        matched_skills: ['Java', 'Spring Boot', 'MySQL'],
+        missing_skills: ['Kafka'],
+        matched_keywords: ['后端开发'],
+        missing_keywords: ['架构'],
+        reasons: ['技术栈与 JD 部分匹配，缺少 Kafka 经验', '4 年工作经验稍低于要求的 5 年'],
+        risk_score: 15,
+        risk_level: 'low',
+      },
+    ],
+  }
+}
+
+// ===========================
+// 面试题推荐
+// ===========================
+
+export async function mockRecommendInterviewQuestions(): Promise<InterviewQuestionResponse> {
+  await delay(500)
+  return {
+    resume_id: 'mock_res_001',
+    candidate_name: '张明远',
+    items: [
+      {
+        question_id: 'q_001',
+        category: '技术能力',
+        difficulty: 'medium',
+        question: '请描述你在字节跳动主导微前端架构改造时，如何处理主子应用之间的状态共享和通信？',
+        rationale: '候选人在字节跳动有微前端架构经验，此题验证其架构设计能力',
+        related_resume_fields: ['work_experience', 'project_experience'],
+        expected_signals: ['架构理解深度', '跨应用状态管理', 'qiankun 框架掌握'],
+      },
+      {
+        question_id: 'q_002',
+        category: '技术能力',
+        difficulty: 'hard',
+        question: '在抖音电商中台，首屏性能提升 40% 具体是通过哪些手段实现的？',
+        rationale: '候选人在工作中提到性能优化成果，验证其是否真正主导相关工作',
+        related_resume_fields: ['work_experience'],
+        expected_signals: ['性能优化方法论', '具体技术手段', '量化思维'],
+      },
+      {
+        question_id: 'q_003',
+        category: '项目经验',
+        difficulty: 'medium',
+        question: '在美团期间沉淀的 30+ 业务组件中，请举一个最复杂的组件，说明其设计和实现思路',
+        rationale: '验证候选人组件化开发的深度',
+        related_resume_fields: ['work_experience'],
+        expected_signals: ['组件设计能力', '抽象能力', '代码复用意识'],
+      },
+      {
+        question_id: 'q_004',
+        category: '职业发展',
+        difficulty: 'easy',
+        question: '为什么从字节跳动离职？未来 3 年的职业规划是什么？',
+        rationale: '结合跳槽频率风险项，了解离职动机和职业稳定性',
+        related_resume_fields: ['candidate', 'work_experience'],
+        expected_signals: ['职业规划清晰度', '离职原因合理性', '稳定性预期'],
+      },
+      {
+        question_id: 'q_005',
+        category: '风险核验',
+        difficulty: 'easy',
+        question: '2019 年 7 月至 9 月期间的具体去向？这段时间是否有未列出的培训或项目经历？',
+        rationale: '风险报告指出履历存在 2 个月空窗期，此题核验该时间段的实际情况',
+        related_resume_fields: ['timeline_index'],
+        expected_signals: ['空窗期合理性', '回答诚实度'],
+      },
+    ],
   }
 }

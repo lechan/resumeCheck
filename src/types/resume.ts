@@ -95,3 +95,144 @@ export interface ParseResult {
   raw_text: string
   raw_blocks: object[]
 }
+
+// Root 基础信息
+export interface RootInfo {
+  name: string
+  version: string
+  docs: string
+}
+
+// 健康检查
+export interface HealthStatus {
+  status: string
+  services: Record<string, string>
+  time: string
+}
+
+// 任务状态
+export interface TaskStatus {
+  resume_id: string
+  task_id: string
+  status: string
+  progress: number
+  current_stage: string
+  created_at: string
+  updated_at: string
+}
+
+// 重新分析请求体
+export interface ReanalyzeRequest {
+  force_ocr?: boolean
+  rule_profile?: string
+  use_llm_review?: boolean
+}
+
+// 风险报告下载响应
+export interface ReportDownload {
+  resume_id: string
+  format: string
+  download_url: string
+}
+
+// ---- 人才库 ----
+
+// 导入简历库请求
+export interface ImportLibraryRequest {
+  resume_id: string
+  tags?: string[]
+  source_label?: string
+}
+
+// 简历库列表项
+export interface LibraryListItem {
+  library_id: string
+  resume_id: string
+  candidate_name: string
+  current_title: string
+  current_city?: string
+  highest_degree?: string
+  total_work_years?: number
+  skills: string[]
+  tags: string[]
+  risk_score: number
+  risk_level: string
+  created_at: string
+  updated_at: string
+}
+
+// 简历库详情（含完整 resume 和 risk_report）
+export interface LibraryDetail extends LibraryListItem {
+  resume: ResumeSchema
+  risk_report: RiskReport
+  source_label?: string
+}
+
+// 简历库查询参数
+export interface LibraryQuery {
+  keyword?: string
+  risk_level?: string
+  min_risk_score?: number
+  tag?: string
+}
+
+// ---- 职位匹配 ----
+
+export interface JobMatchRequest {
+  job_title?: string
+  job_description?: string
+  required_skills?: string[]
+  preferred_skills?: string[]
+  keywords?: string[]
+  min_years?: number
+  degree_requirement?: string
+  max_results?: number
+  min_score?: number
+}
+
+export interface JobMatchItem {
+  library_id: string
+  resume_id: string
+  candidate_name: string
+  current_title: string
+  match_score: number
+  matched_skills: string[]
+  missing_skills: string[]
+  matched_keywords: string[]
+  missing_keywords: string[]
+  reasons: string[]
+  risk_score: number
+  risk_level: string
+}
+
+export interface JobMatchResponse {
+  total_candidates_scanned: number
+  matched_count: number
+  items: JobMatchItem[]
+}
+
+// ---- 面试题推荐 ----
+
+export interface InterviewQuestionRequest {
+  resume_id?: string
+  library_id?: string
+  question_count?: number
+  include_risk_questions?: boolean
+}
+
+export interface InterviewQuestionItem {
+  question_id: string
+  category: string
+  difficulty: string
+  question: string
+  rationale: string
+  related_resume_fields: string[]
+  expected_signals: string[]
+}
+
+export interface InterviewQuestionResponse {
+  resume_id?: string
+  library_id?: string
+  candidate_name: string
+  items: InterviewQuestionItem[]
+}

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useResumeStore } from '@/stores/resume'
 import UploadZone from '@/components/UploadZone.vue'
 import PromptInput from '@/components/PromptInput.vue'
@@ -12,6 +12,11 @@ const selectedFile = ref<File | null>(null)
 const isUpload = () => store.step === 'upload'
 const isLoading = () => store.step === 'loading'
 const isResult = () => store.step === 'result'
+const isOnline = () => store.healthStatus?.status === 'ok'
+
+onMounted(() => {
+  store.init()
+})
 
 function handleFileSelect(file: File | null) {
   selectedFile.value = file
@@ -26,6 +31,10 @@ function handleUpload() {
 function handleReset() {
   selectedFile.value = null
   store.reset()
+}
+
+function toggleMock() {
+  store.useMock = !store.useMock
 }
 </script>
 
@@ -56,12 +65,26 @@ function handleReset() {
         </div>
         <span class="app-name">ResumeAI</span>
         <span class="app-subtitle">智能简历分析平台</span>
-        <span class="mock-badge" v-if="store.useMock">MOCK</span>
+        <label class="mock-toggle" title="切换 Mock / 真实接口">
+          <span class="toggle-label">Mock</span>
+          <input type="checkbox" :checked="store.useMock" @change="toggleMock" />
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </label>
       </div>
       <div class="header-right">
-        <a href="#" class="header-link">API 文档</a>
-        <div class="status-dot" :class="{ active: true }"></div>
-        <span class="status-text">服务运行中</span>
+        <a
+          :href="store.rootInfo?.docs || '#'"
+          class="header-link"
+          target="_blank"
+          v-if="store.rootInfo"
+          >API 文档</a
+        >
+        <div class="status-dot" :class="{ active: isOnline() }"></div>
+        <span class="status-text">
+          {{ isOnline() ? '服务运行中' : store.healthStatus ? '服务异常' : '检测中...' }}
+        </span>
       </div>
     </header>
 
@@ -171,8 +194,8 @@ function handleReset() {
 
     <!-- 底部 -->
     <footer class="app-footer">
-      <span>ResumeAI v0.1.0</span>
-      <span class="footer-divider">|</span>
+      <span v-if="store.rootInfo">{{ store.rootInfo.name }} {{ store.rootInfo.version }}</span>
+      <span class="footer-divider" v-if="store.rootInfo">|</span>
       <span>Powered by AI</span>
     </footer>
   </div>
@@ -227,15 +250,54 @@ function handleReset() {
   border-radius: 4px;
 }
 
-.mock-badge {
-  font-size: 10px;
-  font-weight: 700;
-  color: #e53e3e;
-  padding: 2px 8px;
-  background: rgba(229, 62, 62, 0.08);
-  border: 1px solid rgba(229, 62, 62, 0.25);
-  border-radius: 4px;
-  letter-spacing: 1px;
+.mock-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 4px;
+}
+
+.mock-toggle input {
+  display: none;
+}
+
+.toggle-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.toggle-track {
+  position: relative;
+  width: 32px;
+  height: 18px;
+  background: var(--color-border);
+  border-radius: 9px;
+  transition: background 0.25s;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.25s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.mock-toggle input:checked + .toggle-track {
+  background: var(--color-accent);
+}
+
+.mock-toggle input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(14px);
+  box-shadow: 0 1px 4px rgba(0, 136, 204, 0.35);
 }
 
 .header-right {
