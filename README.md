@@ -44,9 +44,9 @@ server {
     listen       80;
     server_name  your-domain.com;
 
-    # 前端静态文件（hash 路由模式，无需 try_files）
-    location / {
-        root   /usr/share/nginx/html/resume-ai;
+    # 前端静态文件（hash 路由模式，访问路径 /resume/）
+    location /resume/ {
+        alias  /usr/share/nginx/html/resume-ai/;
         index  index.html;
     }
 
@@ -72,7 +72,9 @@ nginx -s reload   # 重载配置
 
 ### 关键配置说明
 
-| 配置项                                   | 说明                           |
-| ---------------------------------------- | ------------------------------ |
-| `proxy_pass http://112.25.126.138:18380` | 后端 API 地址                  |
-| `proxy_read_timeout 120s`                | 延长超时，简历解析可能耗时较长 |
+| 配置项 | 说明 |
+|--------|------|
+| `location /resume/` | 页面访问前缀为 `/resume/`，如 `http://domain.com/resume/` |
+| `alias /usr/share/nginx/html/resume-ai/` | 静态文件根目录 |
+| `proxy_pass http://112.25.126.138:18380` | 后端 API 地址 |
+| `proxy_read_timeout 120s` | 延长超时，简历解析可能耗时较长 |
