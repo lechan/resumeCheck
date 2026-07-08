@@ -12,6 +12,7 @@ import InterviewQuestions from '@/components/InterviewQuestions.vue'
 const router = useRouter()
 const store = useResumeStore()
 const selectedFile = ref<File | null>(null)
+const isDev = import.meta.env.DEV
 const isUpload = () => store.step === 'upload'
 const isLoading = () => store.step === 'loading'
 const isResult = () => store.step === 'result'
@@ -65,7 +66,7 @@ function toggleMock() {
         </div>
         <span class="app-name">ResumeAI</span>
         <span class="app-subtitle">智能简历分析平台</span>
-        <label class="mock-toggle" title="切换 Mock / 真实接口">
+        <label v-if="isDev" class="mock-toggle" title="切换 Mock / 真实接口">
           <span class="toggle-label">Mock</span>
           <input type="checkbox" :checked="store.useMock" @change="toggleMock" />
           <span class="toggle-track">

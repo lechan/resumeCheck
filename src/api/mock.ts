@@ -98,12 +98,12 @@ export async function mockNormalizedResume(_resumeId: string): Promise<ResumeSch
       name: { value: '张明远', confidence: 0.95, evidence: [], derived: false },
       gender: { value: '男', confidence: 0.9, evidence: [], derived: false },
       birth_date: { value: '1995-03', confidence: 0.85, evidence: [], derived: false },
-      age: { value: 29, confidence: 0.85, derived: true },
+      age: { value: 29, confidence: 0.85, evidence: [], derived: true },
       phone: { value: '138****6789', confidence: 0.9, evidence: [], derived: false },
       email: { value: 'zhangmingyuan@example.com', confidence: 0.95, evidence: [], derived: false },
       current_city: { value: '杭州', confidence: 0.8, evidence: [], derived: true },
       highest_degree: { value: '本科', confidence: 0.9, evidence: [], derived: false },
-      total_work_years: { value: 6, confidence: 0.85, derived: true },
+      total_work_years: { value: 6, confidence: 0.85, evidence: [], derived: true },
     },
     education: [
       {

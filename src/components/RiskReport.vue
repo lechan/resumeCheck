@@ -5,14 +5,14 @@ defineProps<{
   report: RiskReport | null
 }>()
 
-function severityStyle(severity: string) {
+function severityStyle(severity: string): { bg: string; border: string; text: string } {
   const map: Record<string, { bg: string; border: string; text: string }> = {
     low: { bg: 'rgba(34,197,94,0.1)', border: 'rgba(34,197,94,0.3)', text: '#22c55e' },
     medium: { bg: 'rgba(234,179,8,0.1)', border: 'rgba(234,179,8,0.3)', text: '#eab308' },
     high: { bg: 'rgba(249,115,22,0.1)', border: 'rgba(249,115,22,0.3)', text: '#f97316' },
     critical: { bg: 'rgba(239,68,68,0.1)', border: 'rgba(239,68,68,0.3)', text: '#ef4444' },
   }
-  return map[severity] || map.low
+  return (map[severity] ?? map.low)!
 }
 
 function severityLabel(severity: string) {
