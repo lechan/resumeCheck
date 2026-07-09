@@ -181,8 +181,19 @@ function toggleMock() {
             {{ store.uploadResult.file_name }}
           </span>
           <div class="toolbar-actions">
-            <button class="btn-action" @click="store.handleDownloadReport()" title="下载报告">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <button
+              class="btn-action"
+              :disabled="store.downloadingReport"
+              @click="store.handleDownloadReport()"
+              title="下载报告"
+            >
+              <svg
+                v-if="!store.downloadingReport"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
                 <path
                   d="M8 2V10M8 10L5 7M8 10L11 7"
                   stroke="currentColor"
@@ -197,10 +208,37 @@ function toggleMock() {
                   stroke-linecap="round"
                 />
               </svg>
-              下载报告
+              <svg
+                v-else
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                class="spinner-icon"
+              >
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" opacity="0.25" />
+                <path
+                  d="M8 2A6 6 0 0 1 14 8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              {{ store.downloadingReport ? '生成中...' : '下载报告' }}
             </button>
-            <button class="btn-action" @click="store.handleImportToLibrary()" title="保存到人才库">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <button
+              class="btn-action"
+              :disabled="store.importingToLibrary"
+              @click="store.handleImportToLibrary()"
+              title="保存到人才库"
+            >
+              <svg
+                v-if="!store.importingToLibrary"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
                 <rect
                   x="1.5"
                   y="2"
@@ -219,7 +257,23 @@ function toggleMock() {
                 />
                 <path d="M8 4V9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
               </svg>
-              保存到人才库
+              <svg
+                v-else
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                class="spinner-icon"
+              >
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" opacity="0.25" />
+                <path
+                  d="M8 2A6 6 0 0 1 14 8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              {{ store.importingToLibrary ? '保存中...' : '保存到人才库' }}
             </button>
           </div>
         </div>
@@ -267,7 +321,7 @@ function toggleMock() {
     <footer class="app-footer">
       <span>ResumeAI v0.1.0</span>
       <span class="footer-divider">|</span>
-      <span>Powered by AI</span>
+      <span>Powered by MG</span>
     </footer>
   </div>
 </template>
@@ -579,6 +633,15 @@ function toggleMock() {
 .btn-action:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
+}
+
+.btn-action:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinner-icon {
+  animation: spin 0.8s linear infinite;
 }
 
 .header-link {

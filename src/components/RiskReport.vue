@@ -111,10 +111,12 @@ function categoryLabel(category: string) {
             <span class="evidence-label">证据</span>
             <div class="evidence-list">
               <div v-for="(ev, evi) in item.evidence" :key="evi" class="evidence-item">
-                <span v-if="ev.item_type">{{ ev.item_type }}</span>
-                <span v-if="ev.work_id">#{{ ev.work_id }}</span>
-                <span v-if="ev.end">结束: {{ ev.end }}</span>
-                <span v-if="ev.start">开始: {{ ev.start }}</span>
+                <div class="evidence-tags">
+                  <span v-if="ev.item_type" class="evidence-tag">{{ ev.item_type }}</span>
+                  <span v-if="ev.work_id" class="evidence-tag">#{{ ev.work_id }}</span>
+                  <span v-if="ev.start" class="evidence-tag">{{ ev.start }}</span>
+                  <span v-if="ev.end" class="evidence-tag">{{ ev.end }}</span>
+                </div>
                 <span class="evidence-text" v-if="ev.text">{{ ev.text }}</span>
               </div>
             </div>
@@ -294,28 +296,32 @@ function categoryLabel(category: string) {
 .evidence-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .evidence-item {
   font-size: 11px;
   color: var(--color-text-muted);
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 6px;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.evidence-item span {
+.evidence-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.evidence-tag {
   background: rgba(107, 114, 128, 0.08);
   padding: 1px 6px;
   border-radius: 3px;
+  white-space: nowrap;
 }
 
 .evidence-text {
-  max-width: 360px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.5;
 }
 
 .empty-state {

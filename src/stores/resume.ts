@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
 import {
   uploadResume,
   getNormalizedResume,
   getRiskReport,
   getRootInfo,
   getHealth,
-  getReportDownloadUrl,
   importToLibrary,
   recommendInterviewQuestions,
 } from '@/api/resume'
@@ -16,7 +17,6 @@ import {
   mockRiskReport,
   mockRootInfo,
   mockHealth,
-  mockReportDownload,
   mockImportToLibrary,
   mockRecommendInterviewQuestions,
 } from '@/api/mock'
@@ -48,6 +48,8 @@ export const useResumeStore = defineStore('resume', () => {
 
   const interviewQuestions = ref<InterviewQuestionResponse | null>(null)
   const loadingQuestions = ref(false)
+  const downloadingReport = ref(false)
+  const importingToLibrary = ref(false)
 
   const step = ref<'upload' | 'loading' | 'result'>('upload')
 
@@ -111,19 +113,50 @@ export const useResumeStore = defineStore('resume', () => {
   }
 
   async function handleDownloadReport() {
-    if (!uploadResult.value) return
+    if (!uploadResult.value || downloadingReport.value) return
+    const el = document.querySelector('.result-stage') as HTMLElement | null
+    if (!el) {
+      error.value = '未找到报告内容'
+      return
+    }
+    downloadingReport.value = true
     try {
-      const result = useMock.value
-        ? await mockReportDownload(uploadResult.value.resume_id, 'pdf')
-        : await getReportDownloadUrl(uploadResult.value.resume_id, 'pdf')
-      window.open(result.download_url, '_blank')
+      const canvas = await html2canvas(el, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+      })
+      const imgData = canvas.toDataURL('image/png')
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      const pageWidth = pdf.internal.pageSize.getWidth()
+      const pageHeight = pdf.internal.pageSize.getHeight()
+      const imgWidth = pageWidth
+      const imgHeight = (canvas.height * imgWidth) / canvas.width
+      let heightLeft = imgHeight
+      let position = 0
+
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+      heightLeft -= pageHeight
+
+      while (heightLeft > 0) {
+        position -= pageHeight
+        pdf.addPage()
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+        heightLeft -= pageHeight
+      }
+
+      const blobUrl = pdf.output('bloburl')
+      window.open(blobUrl, '_blank')
     } catch {
       error.value = '下载报告失败'
+    } finally {
+      downloadingReport.value = false
     }
   }
 
   async function handleImportToLibrary(): Promise<LibraryDetail | null> {
-    if (!uploadResult.value) return null
+    if (!uploadResult.value || importingToLibrary.value) return null
+    importingToLibrary.value = true
     try {
       return useMock.value
         ? await mockImportToLibrary()
@@ -131,6 +164,8 @@ export const useResumeStore = defineStore('resume', () => {
     } catch {
       error.value = '保存到简历库失败'
       return null
+    } finally {
+      importingToLibrary.value = false
     }
   }
 
@@ -171,6 +206,8 @@ export const useResumeStore = defineStore('resume', () => {
     healthStatus,
     interviewQuestions,
     loadingQuestions,
+    downloadingReport,
+    importingToLibrary,
     step,
     init,
     upload,
