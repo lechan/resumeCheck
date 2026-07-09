@@ -50,6 +50,7 @@ export const useResumeStore = defineStore('resume', () => {
   const loadingQuestions = ref(false)
   const downloadingReport = ref(false)
   const importingToLibrary = ref(false)
+  const successMessage = ref<string | null>(null)
 
   const step = ref<'upload' | 'loading' | 'result'>('upload')
 
@@ -76,6 +77,10 @@ export const useResumeStore = defineStore('resume', () => {
       clearInterval(heartbeatTimer)
       heartbeatTimer = null
     }
+  }
+
+  function delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
   }
 
   async function upload(file: File) {
@@ -158,9 +163,15 @@ export const useResumeStore = defineStore('resume', () => {
     if (!uploadResult.value || importingToLibrary.value) return null
     importingToLibrary.value = true
     try {
-      return useMock.value
-        ? await mockImportToLibrary()
-        : await importToLibrary({ resume_id: uploadResult.value.resume_id })
+      const apiCall = useMock.value
+        ? mockImportToLibrary()
+        : importToLibrary({ resume_id: uploadResult.value.resume_id })
+      const [result] = await Promise.all([apiCall, delay(800)])
+      successMessage.value = '已保存到人才库'
+      setTimeout(() => {
+        successMessage.value = null
+      }, 3000)
+      return result
     } catch {
       error.value = '保存到简历库失败'
       return null
@@ -189,6 +200,7 @@ export const useResumeStore = defineStore('resume', () => {
     riskReport.value = null
     interviewQuestions.value = null
     error.value = null
+    successMessage.value = null
     step.value = 'upload'
     uploading.value = false
   }
@@ -208,6 +220,7 @@ export const useResumeStore = defineStore('resume', () => {
     loadingQuestions,
     downloadingReport,
     importingToLibrary,
+    successMessage,
     step,
     init,
     upload,

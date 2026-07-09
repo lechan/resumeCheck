@@ -359,6 +359,11 @@ function handleOpenQuestions() {
         {{ store.error }}
         <button class="error-close" @click="store.error = null">&times;</button>
       </div>
+
+      <!-- 成功提示 -->
+      <div class="success-toast" v-if="store.successMessage">
+        {{ store.successMessage }}
+      </div>
     </main>
 
     <!-- 底部 -->
@@ -758,27 +763,46 @@ function handleOpenQuestions() {
 /* Error Toast */
 .error-toast {
   position: fixed;
-  bottom: 32px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(229, 62, 62, 0.08);
-  border: 1px solid rgba(229, 62, 62, 0.25);
-  color: #c53030;
-  padding: 12px 24px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #dc2626;
+  padding: 10px 24px;
   border-radius: 10px;
   font-size: 13px;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 16px;
   backdrop-filter: blur(8px);
+  z-index: 300;
 }
 
 .error-close {
   background: none;
   border: none;
-  color: #c53030;
+  color: #dc2626;
   cursor: pointer;
   font-size: 18px;
+}
+
+/* Success Toast */
+.success-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #15803d;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  z-index: 300;
 }
 
 /* Footer */
