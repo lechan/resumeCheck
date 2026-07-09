@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { matchJob, queryLibrary, importToLibrary, getLibraryDetail } from '@/api/resume'
+import {
+  matchJob,
+  queryLibrary,
+  importToLibrary,
+  getLibraryDetail,
+  deleteLibrary,
+} from '@/api/resume'
 import {
   mockMatchJob,
   mockQueryLibrary,
   mockImportToLibrary,
   mockGetLibraryDetail,
+  mockDeleteLibrary,
 } from '@/api/mock'
 import type { JobMatchResponse, LibraryListItem, LibraryDetail } from '@/types/resume'
 import StructuredResume from '@/components/StructuredResume.vue'
@@ -31,6 +38,7 @@ const matchResult = ref<JobMatchResponse | null>(null)
 
 const library = ref<LibraryListItem[]>([])
 const loadingLibrary = ref(false)
+const deletingId = ref<string | null>(null)
 
 // 抽屉
 const drawerOpen = ref(false)
@@ -100,6 +108,19 @@ async function loadLibrary() {
 async function handleSaveAndRefresh(resumeId: string) {
   await handleImport(resumeId)
   await loadLibrary()
+}
+
+async function handleDelete(libraryId: string) {
+  if (deletingId.value) return
+  deletingId.value = libraryId
+  try {
+    await (useMock.value ? mockDeleteLibrary(libraryId) : deleteLibrary(libraryId))
+    library.value = library.value.filter((item) => item.library_id !== libraryId)
+  } catch {
+    // error
+  } finally {
+    deletingId.value = null
+  }
 }
 
 loadLibrary()
@@ -223,9 +244,49 @@ loadLibrary()
           class="lib-card"
           @click="openDetail(item.library_id)"
         >
+          <button
+            class="lib-delete"
+            :disabled="deletingId === item.library_id"
+            @click.stop="handleDelete(item.library_id)"
+            title="删除"
+          >
+            <svg
+              v-if="deletingId !== item.library_id"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+            >
+              <path
+                d="M2 4H12M5 4V3C5 2.44772 5.44772 2 6 2H8C8.55228 2 9 2.44772 9 3V4M11 4V11C11 11.5523 10.5523 12 10 12H4C3.44772 12 3 11.5523 3 11V4H11Z"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              v-else
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              class="spinner-icon-sm"
+            >
+              <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5" opacity="0.25" />
+              <path
+                d="M7 2A5 5 0 0 1 12 7"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
           <div class="lib-card-header">
             <span class="lib-name">{{ item.candidate_name }}</span>
-            <span class="lib-risk" :class="'risk-' + item.risk_level">{{ item.risk_level }}</span>
+            <span class="lib-risk" :class="'risk-' + item.risk_level">{{
+              riskLevelLabel(item.risk_level)
+            }}</span>
           </div>
           <p class="lib-title">{{ item.current_title }}</p>
           <div class="lib-meta" v-if="item.current_city || item.total_work_years">
@@ -563,6 +624,49 @@ loadLibrary()
   font-size: 14px;
   opacity: 0;
   transition: opacity 0.2s;
+}
+
+.lib-delete {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s;
+  z-index: 1;
+}
+
+.lib-card:hover .lib-delete {
+  opacity: 1;
+}
+
+.lib-delete:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.lib-delete:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.spinner-icon-sm {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .lib-card-header {

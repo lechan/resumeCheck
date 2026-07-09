@@ -146,6 +146,15 @@ export async function getLibraryDetail(libraryId: string): Promise<LibraryDetail
   return data
 }
 
+/**
+ * DELETE /api/v1/resume-library/{library_id}
+ * 删除简历库中的一条记录
+ */
+export async function deleteLibrary(libraryId: string): Promise<{ success: boolean }> {
+  const { data } = await api.delete<{ success: boolean }>(`/resume-library/${libraryId}`)
+  return data
+}
+
 // ===========================
 // 职位匹配
 // ===========================

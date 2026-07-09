@@ -6,10 +6,6 @@ defineProps<{
   loading: boolean
 }>()
 
-const emit = defineEmits<{
-  fetch: []
-}>()
-
 function diffColor(d: string) {
   const map: Record<string, string> = { easy: '#22c55e', medium: '#eab308', hard: '#f97316' }
   return map[d] || '#6b7280'
@@ -22,25 +18,19 @@ function diffLabel(d: string) {
 
 <template>
   <div class="interview-panel">
-    <div class="panel-header">
-      <h3 class="section-title">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M7 8a3 3 0 1 1 6 0c0 2-3 4-3 4s-3-2-3-4Z" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="10" cy="15" r="0.75" fill="currentColor"/>
-        </svg>
-        面试题推荐
-        <span class="badge" v-if="data">{{ data.candidate_name }}</span>
-      </h3>
-      <button
-        class="btn-action small"
-        @click="emit('fetch')"
-        :disabled="loading"
-        v-if="!data"
-      >
-        {{ loading ? '生成中...' : '生成面试题' }}
-      </button>
-    </div>
+    <h3 class="section-title">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" />
+        <path
+          d="M7 8a3 3 0 1 1 6 0c0 2-3 4-3 4s-3-2-3-4Z"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <circle cx="10" cy="15" r="0.75" fill="currentColor" />
+      </svg>
+      面试题推荐
+      <span class="badge" v-if="data">{{ data.candidate_name }}</span>
+    </h3>
 
     <div class="loading-spot" v-if="loading">
       <div class="spinner-small"></div>
@@ -69,13 +59,7 @@ function diffLabel(d: string) {
 .interview-panel {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-}
-
-.panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: 16px;
 }
 
 .section-title {
@@ -97,28 +81,6 @@ function diffLabel(d: string) {
   padding: 1px 8px;
 }
 
-.btn-action.small {
-  font-size: 12px;
-  padding: 6px 14px;
-  border: 1px solid var(--color-accent);
-  border-radius: 6px;
-  background: transparent;
-  color: var(--color-accent);
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.btn-action.small:hover:not(:disabled) {
-  background: var(--color-accent);
-  color: #fff;
-}
-
-.btn-action.small:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .loading-spot {
   display: flex;
   align-items: center;
@@ -138,7 +100,9 @@ function diffLabel(d: string) {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .questions-list {

@@ -12,6 +12,7 @@ import InterviewQuestions from '@/components/InterviewQuestions.vue'
 const router = useRouter()
 const store = useResumeStore()
 const selectedFile = ref<File | null>(null)
+const showQuestionsDrawer = ref(false)
 const isDev = import.meta.env.DEV
 const isUpload = () => store.step === 'upload'
 const isLoading = () => store.step === 'loading'
@@ -39,6 +40,13 @@ function handleReset() {
 
 function toggleMock() {
   store.useMock = !store.useMock
+}
+
+function handleOpenQuestions() {
+  showQuestionsDrawer.value = true
+  if (!store.interviewQuestions && !store.loadingQuestions) {
+    store.fetchInterviewQuestions()
+  }
 }
 </script>
 
@@ -275,6 +283,18 @@ function toggleMock() {
               </svg>
               {{ store.importingToLibrary ? '保存中...' : '保存到人才库' }}
             </button>
+            <button class="btn-action" @click="handleOpenQuestions()" title="面试题推荐">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2" />
+                <path
+                  d="M5.5 6a2.5 2.5 0 1 1 5 0c0 1.5-2.5 3-2.5 3s-2.5-1.5-2.5-3Z"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                />
+                <circle cx="8" cy="11.5" r="0.6" fill="currentColor" />
+              </svg>
+              面试题
+            </button>
           </div>
         </div>
 
@@ -292,13 +312,6 @@ function toggleMock() {
             <div class="stage-card">
               <RiskReport :report="store.riskReport" />
             </div>
-            <div class="stage-card">
-              <InterviewQuestions
-                :data="store.interviewQuestions"
-                :loading="store.loadingQuestions"
-                @fetch="store.fetchInterviewQuestions()"
-              />
-            </div>
           </div>
 
           <!-- 右侧：结构化简历 -->
@@ -308,6 +321,37 @@ function toggleMock() {
             </div>
           </div>
         </div>
+
+        <!-- 面试题抽屉 -->
+        <Transition name="drawer">
+          <div
+            v-if="showQuestionsDrawer"
+            class="drawer-overlay"
+            @click.self="showQuestionsDrawer = false"
+          >
+            <div class="drawer-panel">
+              <div class="drawer-header">
+                <span class="drawer-title">面试题推荐</span>
+                <button class="drawer-close" @click="showQuestionsDrawer = false">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M15 5L5 15M5 5L15 15"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="drawer-body">
+                <InterviewQuestions
+                  :data="store.interviewQuestions"
+                  :loading="store.loadingQuestions"
+                />
+              </div>
+            </div>
+          </div>
+        </Transition>
       </div>
 
       <!-- 错误提示 -->
@@ -620,24 +664,27 @@ function toggleMock() {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+  border: none;
   border-radius: 8px;
-  color: var(--color-text-secondary);
+  color: #fff;
   font-size: 12px;
-  padding: 8px 14px;
+  font-weight: 600;
+  padding: 8px 16px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s;
+  box-shadow: 0 2px 8px rgba(99, 91, 255, 0.18);
 }
 
-.btn-action:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+.btn-action:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(99, 91, 255, 0.35);
 }
 
 .btn-action:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .spinner-icon {
@@ -772,6 +819,88 @@ function toggleMock() {
 .btn-analyze:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* Drawer */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 200;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.drawer-panel {
+  width: 520px;
+  max-width: 90vw;
+  height: 100%;
+  background: var(--color-card);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.drawer-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.drawer-close:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* Drawer transition */
+.drawer-enter-active,
+.drawer-leave-active {
+  transition: all 0.3s ease;
+}
+
+.drawer-enter-active .drawer-panel,
+.drawer-leave-active .drawer-panel {
+  transition: transform 0.3s ease;
+}
+
+.drawer-enter-from,
+.drawer-leave-to {
+  background: rgba(0, 0, 0, 0);
+}
+
+.drawer-enter-from .drawer-panel,
+.drawer-leave-to .drawer-panel {
+  transform: translateX(100%);
 }
 
 /* Responsive */

@@ -425,6 +425,11 @@ export async function mockGetLibraryDetail(_libraryId: string): Promise<LibraryD
   return mockImportToLibrary()
 }
 
+export async function mockDeleteLibrary(_libraryId: string): Promise<{ success: boolean }> {
+  await delay(300)
+  return { success: true }
+}
+
 // ===========================
 // 职位匹配
 // ===========================
